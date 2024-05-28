@@ -1,0 +1,16 @@
+.product{
+    display: flex;
+    flex: 2 2 10%;
+    align-content: space-between;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .card{
+    flex: inherit;
+    padding-top: 2%;
+  }
+  .img{
+    width: 20%;
+    margin-bottom: 0px;
+  }
