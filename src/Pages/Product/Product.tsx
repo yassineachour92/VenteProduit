@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import {CardProduct} from '../../Pages/CardProduct/CardProduct.tsx'
 import './product.css'
+import { product } from "../../type.ts";
 
 const fetchPosts = async () => {
   const res = await fetch("https://dummyjson.com/products");
@@ -21,7 +22,7 @@ export const Product = () => {
   console.log("%csrcPagesProductProduct.tsx:21 data", "color: #007acc;", data);
   return (
     <div className="product">
-      {data.products.map((product:any) => {
+      {data.products.map((product:product) => {
         console.log(
           "%csrcPagesProductProduct.tsx:25 products",
           "color: #007acc;",

@@ -1,13 +1,18 @@
 import React from "react";
-import { Card, Space } from "antd";
+import { Card, Space,InputNumber, InputNumberProps,Button } from "antd";
 import "./cardProduct.css";
-export const CardProduct = ({ product }) => {
+import { product } from "../../type";
+export const CardProduct = ({ product }:{product:product}) => {
+
+  const onChange: InputNumberProps['onChange'] = (value) => {
+    console.log('changed', value);
+  };
+
   return (
     <>
       <Space direction="vertical" size={10}>
         <Card
           title={product.title}
-          extra={<a href="#">More</a>}
           style={{ width: 300, height:320 }}
         >
           <div>
@@ -15,6 +20,13 @@ export const CardProduct = ({ product }) => {
             <p>{product.description}</p>
           </div>
         </Card>
+        <div className="ajouter">
+
+          <InputNumber  defaultValue={product.stock} onChange={onChange}/>
+          <Button type="primary">Ajouter</Button>
+
+        </div>
+
       </Space>
     </>
   );
