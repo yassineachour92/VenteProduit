@@ -2,12 +2,18 @@ import React from "react";
 import { Card, Space,InputNumber, InputNumberProps,Button } from "antd";
 import "./cardProduct.css";
 import { product } from "../../type";
+import activityStore from "../../stores/activityStore.ts";
+
 export const CardProduct = ({ product }:{product:product}) => {
 
   const onChange: InputNumberProps['onChange'] = (value) => {
     console.log('changed', value);
   };
 
+  const addProduct=(product:product)=>{
+    return activityStore.addProduct(product)
+     
+  }
   return (
     <>
       <Space direction="vertical" size={10}>
@@ -21,10 +27,8 @@ export const CardProduct = ({ product }:{product:product}) => {
           </div>
         </Card>
         <div className="ajouter">
-
-          <InputNumber  defaultValue={product.stock} onChange={onChange}/>
-          <Button type="primary">Ajouter</Button>
-
+          <InputNumber defaultValue={0} max={product.stock} onChange={onChange}/>
+          <Button type="primary" onClick={()=>addProduct(product)}>Ajouter</Button>
         </div>
 
       </Space>
