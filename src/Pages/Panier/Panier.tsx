@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import activityStore from "../../stores/activityStore.ts";
-import { product } from "../../type";
+import { ProductType } from "../../type";
 import {  List } from "antd";
 import "./panier.css";
 export const Panier = observer(() => {
@@ -10,7 +10,7 @@ export const Panier = observer(() => {
 
   return (
     <div className="panier">
-      {panier.map((product: product) => (
+      {panier.map((product: ProductType) => (
         <div key={product.id} className="product-item">
 
           <List
@@ -34,7 +34,7 @@ export const Panier = observer(() => {
           />
         </div>
       ))}
-      
+
     </div>
   );
 });

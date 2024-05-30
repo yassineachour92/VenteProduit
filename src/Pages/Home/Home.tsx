@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import { Product } from '../Product/Product.tsx';
 import { Panier } from '../Panier/Panier.tsx';
+import { Favoris } from '../Favorit/Favoris.tsx';
 
 const { Header, Sider, Content } = Layout;
 
@@ -34,7 +34,12 @@ const Home = () => {
             {
               key: '2',
               label: 'Panier',
+            },
+            {
+                key:'3',
+                label:'Favorit',
             }
+
           ]}
           onClick={({ key } :{key:any}) => setContentID(key)}
           />
@@ -61,7 +66,8 @@ const Home = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-         {contentID === "1" ? <Product /> :<Panier />}
+
+         {contentID === "1" ? <Product /> : (contentID === "2" ? <Panier />: <Favoris />) }
         </Content>
       </Layout>
     </Layout>

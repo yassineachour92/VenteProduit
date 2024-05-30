@@ -1,28 +1,52 @@
 import { makeAutoObservable } from "mobx";
-import { product } from "../type";
+import { ProductType } from "../type";
+
+interface activityStore {
+  products: ProductType[];
+}
 
 class ActivityStore {
-  activities:product[] = [];
-  panier:product[]=[];
-  loadingInitial:boolean = false;
+  activities: ProductType[] = [];
+  panier: ProductType[] = [];
+  favoris: ProductType[] = [];
+  loadingInitial: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
   }
+  
 
-  setActivities = (activities:product[]) => {
-    this.activities = activities;
+  setActivities = (activities:any) => {
+ 
+    this.activities = activities.products.map((activity:any) => ({
+      ...activity,
+      favorite: activity.favorite || false, 
+    }));
+    
   };
 
-  setPanier = (panier:product[]) => {
+  setPanier = (panier: ProductType[]) => {
     this.panier = panier;
   };
 
-  addProduct(product: product) {
+  setFavoris = (favoris: ProductType[]) => {
+    this.favoris = favoris;
+  };
+
+  addProduct(product: ProductType) {
     this.panier.push(product);
   }
 
-  setLoadingInitial = (isLoading:boolean) => {
+  addFavoris(product: ProductType) {
+    const existingProduct = this.favoris.find((item) => item.id === product.id);
+    if (!existingProduct) {
+      product.favoris = true;
+      this.favoris.push(product);
+
+    }
+  }
+
+  setLoadingInitial = (isLoading: boolean) => {
     this.loadingInitial = isLoading;
   };
 }

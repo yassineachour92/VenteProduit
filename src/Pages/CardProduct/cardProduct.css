@@ -1,4 +1,9 @@
- 
-.ajouter{
-margin-top: -10px;
+.ajouter {
+  margin-top: -10px;
+}
+
+.imgFavorit {
+  width: 13px;
+  height: 13px;
+  margin-top: 7px;
 }

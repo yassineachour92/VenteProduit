@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {CardProduct} from '../../Pages/CardProduct/CardProduct.tsx'
-import { product } from "../../type.ts";
+import { ProductType } from "../../type.ts";
 import { observer } from "mobx-react-lite";
 import activityStore from "../../stores/activityStore.ts";
 import { fetchPosts } from "../../Api.ts";
@@ -14,6 +14,8 @@ export const Product = observer(() => {
     queryKey: ["posts"],
     queryFn: fetchPosts
   });
+
+{console.log('%csrc\Pages\Product\Product.tsx:17 data', 'color: #007acc;', data)}
 
   useEffect(() => {
     if (data) {
@@ -32,7 +34,7 @@ export const Product = observer(() => {
   }
   return (
     <div className="product">
-      {data.products.map((product:product) => {
+      {data.products.map((product:ProductType) => {
      
         return <div className="card"><CardProduct key={product.id} product={product} /></div>;
       })}

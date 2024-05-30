@@ -1,5 +1,5 @@
 
-export interface product{
+export interface ProductType{
     id:number;
     title:string;
     description:string;
@@ -8,5 +8,6 @@ export interface product{
     brand:string;
     price: number; 
     stock:number;
-    discountPercentage:number
+    discountPercentage:number;
+    favoris?:boolean;
 }
